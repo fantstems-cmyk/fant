@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FÁNT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #1A1916;
+      --gray: #9B9590;
+      --light: #E8E4DC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #fff;
+      color: var(--black);
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--black);
+    }
+
+    /* ─── TEXT SECTIONS ─── */
+    .text-section {
+      padding: 120px 24px 80px;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .brand-name img {
+      height: clamp(40px, 8vw, 70px);
+      width: auto;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    .brand-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--light);
+      margin: 0 auto 40px;
+    }
+
+    .body-ko {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      line-height: 2.2;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      margin-bottom: 32px;
+      word-break: keep-all;
+    }
+
+    .body-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 2;
+      letter-spacing: 0.04em;
+      color: var(--gray);
+    }
+
+    /* ─── LOGO SECTION ─── */
+    .logo-center-section {
+      width: 100%;
+      padding: 80px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-center-section img {
+      height: 20px;
+      width: auto;
+      opacity: 0.35;
+    }
+
+    /* ─── HOW TO ORDER ─── */
+    .steps-section {
+      padding: 80px 24px;
+      max-width: 560px;
+      margin: 0 auto;
+      border-top: 1px solid var(--light);
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--gray);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      padding-top: 2px;
+    }
+
+    .step-title {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--gray);
+    }
+
+    /* ─── ORDER FORM ─── */
+    .form-section {
+      padding: 80px 24px;
+      max-width: 520px;
+      margin: 0 auto;
+      border-top: 1px solid var(--light);
+    }
+
+    .form-section .section-label {
+      margin-bottom: 48px;
+    }
+
+    .order-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--light);
+      padding: 18px 0;
+    }
+
+    .form-field label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      color: var(--gray);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--black);
+      -webkit-appearance: none;
+      resize: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--light);
+    }
+
+    .form-field select option {
+      color: var(--black);
+    }
+
+    .form-field textarea {
+      min-height: 68px;
+      line-height: 1.8;
+    }
+
+    .form-submit {
+      margin-top: 48px;
+      text-align: right;
+    }
+
+    .btn-submit {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      color: var(--black);
+      text-transform: uppercase;
+      padding: 0;
+      position: relative;
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0; right: 0;
+      height: 1px;
+      background: var(--black);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .btn-submit:hover::after {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    .form-success {
+      display: none;
+      padding-top: 48px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+      line-height: 2;
+      text-align: center;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 60px 32px 48px;
+      border-top: 1px solid var(--light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand img {
+      height: 18px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-handle {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    .footer-handle:hover {
+      color: var(--black);
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 480px) {
+      nav { padding: 18px 20px; }
+      .text-section { padding: 80px 20px 60px; }
+      .steps-section, .form-section { padding: 60px 20px; }
+      footer { padding: 48px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <img src="로고PNG.png" alt="FÁNT" />
+    </a>
+    <div class="nav-links">
+      <a href="#order">order</a>
+      <a href="#how">guide</a>
+    </div>
+  </nav>
+
+  <!-- ORDER FORM -->
+  <div class="form-section" id="order" style="border-top: none; padding-top: 100px;">
+    <p class="section-label">order inquiry</p>
+    <form
+      class="order-form"
+      action="https://formspree.io/f/mlgkepza"
+      method="POST"
+      id="inquiryForm"
+    >
+      <input type="hidden" name="_subject" value="FÁNT 주문 신청" />
+
+      <div class="form-field">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" placeholder="" required />
+      </div>
+      <div class="form-field">
+        <label for="contact">연락처</label>
+        <input type="text" id="contact" name="contact" placeholder="010-0000-0000" required />
+      </div>
+      <div class="form-field">
+        <label for="delivery_date">수령 희망일</label>
+        <input type="date" id="delivery_date" name="delivery_date" required />
+      </div>
+      <div class="form-field">
+        <label for="recipient">받으실 분</label>
+        <input type="text" id="recipient" name="recipient" placeholder="본인 / 선물 대상자 성함" />
+      </div>
+      <div class="form-field">
+        <label for="tone">원하시는 분위기 / 톤</label>
+        <input type="text" id="tone" name="tone" placeholder="예) 차분하고 자연스러운 / 화이트 위주 / 다크하고 풍성한" />
+      </div>
+      <div class="form-field">
+        <label for="address">배송 주소</label>
+        <input type="text" id="address" name="address" placeholder="도로명 주소 + 상세 주소" required />
+      </div>
+      <div class="form-field">
+        <label for="card">메시지 카드</label>
+        <select id="card" name="card">
+          <option value="없음">필요 없음</option>
+          <option value="있음">포함 원함</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">카드 문구 / 기타 요청</label>
+        <textarea id="message" name="message" placeholder="전달하고 싶은 말, 알레르기, 기타 요청사항"></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button class="btn-submit" type="submit">send inquiry</button>
+      </div>
+    </form>
+
+    <p class="form-success" id="formSuccess">
+      신청이 전달되었습니다.<br>곧 연락드리겠습니다.
+    </p>
+  </div>
+
+  <!-- BRAND INTRO -->
+  <div class="text-section reveal">
+    <div class="brand-name">
+      <img src="로고PNG.png" alt="FÁNT" />
+    </div>
+    <div class="brand-divider"></div>
+  </div>
+
+  <!-- HOW TO ORDER -->
+  <div class="steps-section" id="how">
+    <p class="section-label reveal">how to order</p>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step-num">01</span>
+        <div>
+          <p class="step-title">신청</p>
+          <p class="step-desc">아래 폼 또는 인스타그램 DM으로 수령일과 받으실 분을 알려주세요.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">02</span>
+        <div>
+          <p class="step-title">안내</p>
+          <p class="step-desc">요청해주신 분위기에 맞춰 계절의 꽃과 색감을 제안드립니다. 입금 안내와 함께 확인을 도와드리며, 메시지 카드가 필요하신 경우 함께 말씀해 주세요.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">03</span>
+        <div>
+          <p class="step-title">도착</p>
+          <p class="step-desc">지정하신 날, 꽃이 받으실 분의 공간에 도착합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAND QUOTE -->
+  <div class="text-section reveal" style="padding-top: 60px;">
+    <p class="body-en">
+      A flower arrives at your door. You open it slowly.<br>
+      You look first, then find its place.<br>
+      The day changes, just a little.<br>
+      We believe the whole process is part of the gift.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand"><img src="로고PNG.png" alt="FÁNT" /></span>
+    <a href="https://www.instagram.com/fant__official" target="_blank" class="footer-handle">@fant__official</a>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => obs.observe(el));
+
+    // Formspree AJAX
+    const form = document.getElementById('inquiryForm');
+    const success = document.getElementById('formSuccess');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        }
+      } catch { form.submit(); }
+    });
+  </script>
+
+</body>
+</html>
